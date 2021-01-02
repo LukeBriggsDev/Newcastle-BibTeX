@@ -676,7 +676,7 @@ FUNCTION {n.dashify}
 }
 
 FUNCTION {word.in}
-{ bbl.in capitalize
+{ bbl.in
   " " * }
 
 FUNCTION {format.date}
@@ -875,7 +875,12 @@ FUNCTION {bt.enquote}
 FUNCTION {format.booktitle}
 {
   booktitle "booktitle" bibinfo.check
-  bt.enquote
+  emphasize
+  duplicate$ empty$ 'skip$
+  { "" swap$ *
+    ". " *
+  }
+  if$
 }
 FUNCTION {format.in.ed.booktitle}
 { format.booktitle duplicate$ empty$ 'skip$
@@ -885,7 +890,7 @@ FUNCTION {format.in.ed.booktitle}
       if$
       editor "editor" format.names.ed duplicate$ empty$ 'pop$
         {
-          "," *
+          "" *
           " " *
           get.bbl.editor
           "(" swap$ * ") " *
@@ -1099,7 +1104,6 @@ FUNCTION {incollection}
   format.date "year" output.check
   date.block
   format.title "title" output.check
-  new.block
   crossref missing$
     { format.in.ed.booktitle "booktitle" output.check
       end.quote.btitle
