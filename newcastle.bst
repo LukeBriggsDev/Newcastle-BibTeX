@@ -9,6 +9,7 @@
 %% *** For Newcastle University students ***
 %% 
 %% Copyright 1994-2011 Patrick W Daly
+%%           2021 Luke Briggs <https://lukebriggs.dev>
  % ===============================================================
  % IMPORTANT NOTICE:
  % This bibliographic style (bst) file has been generated from one or
