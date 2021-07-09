@@ -1,6 +1,6 @@
 # newcastle-bst: Harvard referencing style as recommended by Newcastle University
 
-This package provides a [BibTeX](https://ctan.org/pkg/README.md/BibTeX) style to format reference lists in the [Harvard at Newcastle](https://libguides.ncl.ac.uk/managing/harvard) style recommended by Newcastle University. It should be used alongside [natbib](https://ctan.org/pkg/natbib) for citations.
+This package provides a [BibTeX](https://ctan.org/pkg/BibTeX) style to format reference lists in the [Harvard at Newcastle](https://libguides.ncl.ac.uk/managing/harvard) style recommended by Newcastle University. It should be used alongside [natbib](https://ctan.org/pkg/natbib) for citations.
 
 ## Installation
 The required style file is available from [GitHub](https://github.com/LukeBriggsDev/Newcastle-BibTeX) and [CTAN](https://ctan.org/pkg/newcastle-bst). You can use the style by copying it into your working directory containing your `.tex` file. You can also add it to your bst directory in your tex path to use it without having to copy it over each time.
