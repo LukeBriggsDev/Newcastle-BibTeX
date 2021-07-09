@@ -9,7 +9,7 @@
 %% *** For Newcastle University students ***
 %% 
 %% Copyright 1994-2011 Patrick W Daly
-%%           2021 Luke Briggs <https://lukebriggs.dev>
+%%           2021 Luke Briggs
  % ===============================================================
  % IMPORTANT NOTICE:
  % This bibliographic style (bst) file has been generated from one or
@@ -51,6 +51,8 @@
  %   \citeauthor*{key} ==>>          Jones, Baker, and Smith
  %   \citeyear{key} ==>>             1990
  %---------------------------------------------------------------------
+ % OTHER REQUIREMENTS:
+ % - isodate
 
 ENTRY
   { address
@@ -76,6 +78,8 @@ ENTRY
     title
     type
     url
+    urldate
+    titleaddon
     volume
     year
   }
@@ -366,7 +370,16 @@ FUNCTION {format.url}
   url
   duplicate$ empty$
     { pop$ "" }
-    { "\urlprefix\url{" swap$ * "}" * }
+    { "Available at: \url{" swap$ * "}" * }
+  if$
+}
+
+FUNCTION {format.urldate}
+{
+  urldate
+  duplicate$ empty$
+    { pop$ "" }
+    { "(Accessed: \printdate{" swap$ * "})" *}
   if$
 }
 
@@ -515,6 +528,19 @@ FUNCTION {format.note}
   if$
 }
 
+FUNCTION {format.misctitle}
+{ title
+  duplicate$ empty$ 'skip$
+    { "t" change.case$ }
+  if$
+  "title" bibinfo.check
+  duplicate$ empty$ 'skip$
+    {
+      "\emph{" swap$ *
+      "}" *
+    }
+  if$
+}
 FUNCTION {format.title}
 { title
   duplicate$ empty$ 'skip$
@@ -528,6 +554,15 @@ FUNCTION {format.title}
     }
   if$
 }
+FUNCTION {format.titleaddon}
+{ 
+  titleaddon empty$
+    { "" }
+    {  titleaddon }
+  if$
+
+}
+
 FUNCTION {format.full.names}
 {'s :=
  "" 't :=
@@ -1164,12 +1199,15 @@ FUNCTION {misc}
   author format.key output
   format.date "year" output.check
   date.block
-  format.title output
+  format.misctitle output
+  format.titleaddon output
   new.block
   howpublished "howpublished" bibinfo.check output
   format.doi output
   new.block
   format.url output
+  new.block
+  format.urldate output
   new.block
   format.note output
   fin.entry
@@ -1543,7 +1581,7 @@ FUNCTION {begin.bib}
   write$ newline$
   "\providecommand{\url}[1]{\texttt{#1}}"
   write$ newline$
-  "\providecommand{\urlprefix}{Available at: URL }"
+  "\providecommand{\urlprefix}{ Available at: }"
   write$ newline$
   "\expandafter\ifx\csname urlstyle\endcsname\relax"
   write$ newline$

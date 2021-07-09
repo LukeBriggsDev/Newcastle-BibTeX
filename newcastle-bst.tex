@@ -1,0 +1,205 @@
+%! Author = Luke Briggs
+%! Date = 2021/07/09
+
+\documentclass{article}
+\usepackage[comma]{natbib}
+\usepackage[colorlinks=true]{hyperref}
+\usepackage{listings}
+\usepackage[margin=2cm]{geometry}
+\usepackage[UKenglish]{isodate}
+\usepackage{xcolor}
+\usepackage{bibentry}
+\bibliographystyle{newcastle}
+\definecolor{codebg}{RGB}{246, 245, 244}
+\lstdefinestyle{mystyle}{
+    basicstyle=\linespread{1.1}\ttfamily\footnotesize,
+    backgroundcolor=\color{codebg}
+}
+\lstset{showstringspaces=false, style=mystyle}
+
+\begin{document}
+\nobibliography{bibliography}
+\title{newcastle-bst: Harvard referencing style as recommended by Newcastle University}
+\author{Maintainer: Luke Briggs}
+\date{Package v1.0 - \printdate{2021-07-09}}
+\maketitle
+
+\section{Introduction}
+This package provides a \href{https://ctan.org/pkg/README.md/BibTeX}{BibTeX} style to format reference lists in the \href{https://libguides.ncl.ac.uk/managing/harvard}{Harvard at Newcastle} style recommended by Newcastle University. 
+It should be used alongside \href{https://ctan.org/pkg/README.md/natbib}{natbib} for citations.
+
+\subsection{Installation}
+The required style file is available from \href{https://github.com/LukeBriggsDev/Newcastle-BibTeX}{GitHub} and \href{https://ctan.org/pkg/newcastle-bst}{CTAN}. 
+You can use the style by copying it into your working directory containing your `.tex` file. 
+You can also add it to your bst directory in your tex path to use it without having to copy it over each time.
+
+\subsection{Using the style}
+To use the style include this in your preamble:
+\begin{lstlisting}[language=tex]
+\usepackage{natbib}
+\usepackage[UKenglish]{isodate}
+\bibliographystyle{newcastle}
+\end{lstlisting}
+
+Also remember to specify your `.bib` file at the end of the document:
+\begin{lstlisting}[language=tex]
+\bibliography{file}
+\end{lstlisting}
+
+This style is designed to be used alongside \href{https://ctan.org/pkg/natbib}{natbib} and it is the commands from this package that you should use when citing:
+\begin{itemize}
+    \item \lstinline!\citet{key} ==>>                 Jones et al. (1990)!
+    \item \lstinline!\citet*{key} ==>>                Jones, Baker, and Smith (1990)!
+    \item \lstinline!\citep{key} ==>>                 (Jones et al., 1990)!
+    \item \lstinline!\citep*{key} ==>>                (Jones, Baker, and Smith, 1990)!
+    \item \lstinline!\citep[chap. 2]{key} ==>>        (Jones et al., 1990, chap. 2)!
+    \item \lstinline!\citep[e.g.][]{key} ==>>         (e.g. Jones et al., 1990)!
+    \item \lstinline!\citep[e.g.][p. 32]{key} ==>>   (e.g. Jones et al., 1990, p. 32)!
+    \item \lstinline!\citeauthor{key} ==>>            Jones et al.!
+    \item \lstinline!\citeauthor*{key} ==>>           Jones, Baker, and Smith!
+    \item \lstinline!\citeyear{key} ==>>              1990!
+\end{itemize}
+
+\section{Examples}
+
+The easiest way to create .bib files for this style is through exporting entries from a reference manager such as \href{https://www.mendeley.com/}{Mendeley}.
+However, some parts are not available through this (such as titleaddon for computer programs).
+If you notice any discrepancies between generated references and the recommended styles then please raise this on \href{https://github.com/LukeBriggsDev/Newcastle-BibTeX/issues}{GitHub}
+
+\subsection{Books and book chapters}
+\subsubsection*{Book with author(s)}
+
+
+\bibentry{Ammann2016}
+
+\begin{lstlisting}
+@book{Ammann2016,
+address = {Cambridge, United Kingdom},
+author = {Ammann, Paul and Offutt, Jeff},
+doi = {10.1017/9781316771273},
+edition = {2},
+pages = {26},
+publisher = {Cambridge University Press},
+title = {{Introduction to Software Testing}},
+year = {2016}
+}
+\end{lstlisting}
+
+\subsubsection*{Book with editor(s) instead of authors}
+
+\bibentry{rothman.etal2008me}
+
+\begin{lstlisting}
+@book{rothman.etal2008me,
+editor = {Kenneth J. Rothman and Sander Greenland and Timothy L. Lash},
+year = {2008},
+title = {Modern Epidemiology},
+edition = {3},
+address = {Philadelphia, Pa.},
+publisher = {Lippincott Williams \& Wilkins}
+}
+\end{lstlisting}
+
+\subsubsection*{Book known by its title}
+
+\bibentry{bnf2020}
+
+\begin{lstlisting}
+@book{bnf2020,
+year = {2020},
+title = {{British National Formulary}},
+edition = {79},
+address = {London},
+publisher = {Pharmaceutical Press}
+}
+\end{lstlisting}
+
+\subsubsection*{One chapter from a collection (by different authors) in an edited book}
+
+Cunningham, W. (2008) ‘Ward Cunningham, inventor of Wiki, inventor of Fit, coinventor of eXtreme Programming.’In R.C. Martin, (ed.)Clean Code: A Handbook of Agile Software Craftsmanship. Boston, MA: Pearson Education,Inc, p. 11.
+
+\begin{lstlisting}
+@incollection{Cunningham2008,
+address = {Boston, MA},
+author = {Cunningham, Ward},
+booktitle = {Clean Code: A Handbook of Agile Software Craftsmanship},
+editor = {Martin, Robert C.},
+isbn = {978-0-13-235088-4},
+pages = {11},
+publisher = {Pearson Education, Inc},
+title = {{Ward Cunningham, inventor of Wiki, inventor of Fit, coinventor of eXtreme Programming.}},
+year = {2008}
+}
+\end{lstlisting}
+
+\subsection{Articles and periodicals}
+\subsubsection{Journal article}
+
+Stevens,  W.P.,  Myers,  G.J.  and  Constantine,  L.L.  (1999)  ‘Structured  design’.IBM Systems Journal,  38(2),  pp.231–256.  doi:  10.1147/sj.382.0231.4
+
+\begin{lstlisting}
+@article{Stevens1999,
+author = {Stevens, W. P. and Myers, G. J. and Constantine, L. L.},
+doi = {10.1147/sj.382.0231},
+issn = {00188670},
+journal = {IBM Systems Journal},
+number = {2},
+pages = {231--256},
+title = {{Structured design}},
+volume = {38},
+year = {1999}
+}
+\end{lstlisting}
+
+\subsubsection{Newspaper article}
+
+Haurant, S. (2004) ‘Britain’s borrowing hits£1 trillion’.The Guardian, 29 July, p. 16c.
+
+\begin{lstlisting}
+@article{haurant2004bbh,
+author = {Haurant, S.},
+year = {2004},
+title = {Britain's Borrowing Hits \pounds 1 Trillion},
+journal = {The {Guardian}},
+volume = {29 July},
+pages = {16c}
+}
+\end{lstlisting}
+
+\subsection{Digital media}
+\subsubsection{Website/webpage}
+
+\bibentry{Letouzey2016}
+
+\begin{lstlisting}
+@misc{Letouzey2016,
+abstract = {What is Technical Debt? Where does it comes from?},
+author = {Letouzey, Jean Louis and Whelan, Declan},
+booktitle = {Agile Alliance},
+pages = {4},
+title = {{Introduction to the Technical Debt Concept}},
+url = {https://www.agilealliance.org/wp-content/uploads/2016/05/
+        IntroductiontotheTechnicalDebtConcept-V-02.pdf},
+urldate = {2020-01-02},
+year = {2016}
+}
+\end{lstlisting}
+
+\subsubsection{Computer Program}
+
+\bibentry{Briggs2021}
+
+\begin{lstlisting}
+@misc{Briggs2021,
+author = {Briggs, Luke},
+title = {{Pepys}},
+titleaddon = {(v.1) [computer program]},
+url = {https://lukebriggs.dev/pepys},
+year = {2021},
+}
+\end{lstlisting}
+
+\clearpage
+
+\end{document}
+
