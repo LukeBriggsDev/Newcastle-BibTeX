@@ -1,3 +1,4 @@
+![logo](logo.svg)
 # newcastle-bst: Harvard referencing style as recommended by Newcastle University
 
 This package provides a [BibTeX](https://ctan.org/pkg/BibTeX) style to format reference lists in the [Harvard at Newcastle](https://libguides.ncl.ac.uk/managing/harvard) style recommended by Newcastle University. It should be used alongside [natbib](https://ctan.org/pkg/natbib) for citations.
