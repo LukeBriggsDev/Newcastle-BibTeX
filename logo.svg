@@ -25,16 +25,30 @@
      showgrid="false"
      units="px"
      inkscape:zoom="0.26205012"
-     inkscape:cx="1803.0902"
-     inkscape:cy="684.98346"
+     inkscape:cx="585.76581"
+     inkscape:cy="513.26059"
      inkscape:window-width="1920"
      inkscape:window-height="1017"
      inkscape:window-x="-8"
      inkscape:window-y="-8"
      inkscape:window-maximized="1"
-     inkscape:current-layer="layer1" />
+     inkscape:current-layer="layer2" />
   <defs
      id="defs2" />
+  <g
+     inkscape:groupmode="layer"
+     id="layer2"
+     inkscape:label="bg">
+    <rect
+       style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;paint-order:stroke fill markers"
+       id="rect954"
+       width="1068.9166"
+       height="381"
+       x="5e-07"
+       y="5e-07"
+       rx="33.866665"
+       ry="33.866665" />
+  </g>
   <g
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
